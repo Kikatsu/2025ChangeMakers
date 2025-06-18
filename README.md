@@ -149,18 +149,35 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    %% Raspberry Pi Section
-    Raspberry_Pi["Raspberry Pi"] --> |"Power"| Power["Power Bank\nUSB-C"]
-    Raspberry_Pi --> |"Camera Input"| Cam["Camera Module\nUSB-A"]
-    Raspberry_Pi --> |"SSH Control"| EV3_Brick["EV3 Brick"]
-    
-    %% EV3 Brick Section
-    EV3_Brick --> |"Motor Control"| Drive["Drive Motor\nPort A"]
-    EV3_Brick --> |"Steering Control"| Steer["Steering Motor\nPort B"]
-    EV3_Brick --> |"Distance Input"| USL["Ultrasonic Sensor (Left)\nPort 1"]
-    EV3_Brick --> |"Distance Input"| USR["Ultrasonic Sensor (Right)\nPort 2"]
-    EV3_Brick --> |"Color Input"| Color["Color Sensor\nPort 3"]
-    EV3_Brick --> |"Button Input"| Touch["Touch Sensor\nPort 4"]
+    subgraph EV3_Brick["EV3 Brick"]
+        USL["Ultrasonic Sensor (Left)\nPort 1"]
+        USR["Ultrasonic Sensor (Right)\nPort 2"]
+        Color["Color Sensor\nPort 3"]
+        Touch["Touch Sensor\nPort 4"]
+        Drive["Drive Motor\nPort A"]
+        Steer["Steering Motor\nPort B"]
+    end
+    subgraph Raspberry_Pi["Raspberry Pi"]
+        Cam["Camera Module\nCSI Port"]
+        Power["Power Bank\nUSB-C"]
+    end
+    USL --> EV3_Brick
+    USR --> EV3_Brick
+    Color --> EV3_Brick
+    Touch --> EV3_Brick
+    Drive --> EV3_Brick
+    Steer --> EV3_Brick
+    Cam --> Raspberry_Pi
+    Power --> Raspberry_Pi
+    Raspberry_Pi -- "USB-A (SSH)" --> EV3_Brick
+    EV3_Brick -- "Motors & Sensors" --> Drive
+    EV3_Brick -- "Motors & Sensors" --> Steer
+    EV3_Brick -- "Motors & Sensors" --> USL
+    EV3_Brick -- "Motors & Sensors" --> USR
+    EV3_Brick -- "Motors & Sensors" --> Color
+    EV3_Brick -- "Motors & Sensors" --> Touch
+    Raspberry_Pi -- "Camera Input" --> Cam
+    Raspberry_Pi -- "Power" --> Power
 ```
 
 
