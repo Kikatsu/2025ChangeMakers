@@ -125,6 +125,38 @@ flowchart TD
 
 ### 🔌 Connection Scheme
 
+
+flowchart TD
+    subgraph EV3_Brick["EV3 Brick"]
+        USL["Ultrasonic Sensor (Left)\nPort 1"]
+        USR["Ultrasonic Sensor (Right)\nPort 2"]
+        Color["Color Sensor\nPort 3"]
+        Touch["Touch Sensor\nPort 4"]
+        Drive["Drive Motor\nPort A"]
+        Steer["Steering Motor\nPort B"]
+    end
+    subgraph Raspberry_Pi["Raspberry Pi"]
+        Cam["Camera Module\nCSI Port"]
+        Power["Power Bank\nUSB-C"]
+    end
+    USL --> EV3_Brick
+    USR --> EV3_Brick
+    Color --> EV3_Brick
+    Touch --> EV3_Brick
+    Drive --> EV3_Brick
+    Steer --> EV3_Brick
+    Cam --> Raspberry_Pi
+    Power --> Raspberry_Pi
+    Raspberry_Pi -- "USB-A (SSH)" --> EV3_Brick
+    EV3_Brick -- "Motors & Sensors" --> Drive
+    EV3_Brick -- "Motors & Sensors" --> Steer
+    EV3_Brick -- "Motors & Sensors" --> USL
+    EV3_Brick -- "Motors & Sensors" --> USR
+    EV3_Brick -- "Motors & Sensors" --> Color
+    EV3_Brick -- "Motors & Sensors" --> Touch
+    Raspberry_Pi -- "Camera Input" --> Cam
+    Raspberry_Pi -- "Power" --> Power
+
 #### EV3 Configuration
 
 | Port Type | Port Number | Component | Purpose |
