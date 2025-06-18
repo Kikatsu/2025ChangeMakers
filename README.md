@@ -418,12 +418,4 @@ if lower_area > 20000:
 ---
 
 **Acknowledgements:**  
-## Team & Contact
-Thanks to the WRO community and open-source contributors for inspiration and code samples.
-
-Yesken Kairat 16 kairatyesken@gmail.com
-Tolendi Temirlan 16 temiktrmuk@gmail.com
-
-
-**Acknowledgements:**  
 Thanks to the WRO community and open-source contributors for inspiration and code samples.
