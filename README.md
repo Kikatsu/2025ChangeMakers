@@ -215,8 +215,8 @@ flowchart TD
     PowerBank --> |"5V"| RPi
     RPi --> |"3.3V"| Cam
 
-    style EV3Bat fill:#f96,stroke:#333
-    style PowerBank fill:#9cf,stroke:#333
+    style EV3Bat fill:#000,stroke:#333
+    style PowerBank fill:#000,stroke:#333
     style EV3 fill:#000,stroke:#333
     style RPi fill:#000,stroke:#333
     style Motors fill:#000,stroke:#333
