@@ -49,7 +49,9 @@ Our robot is designed to autonomously navigate a WRO FE field, detect colored pi
 ## System Architecture
 
 - **Front-wheel Ackerman steering** for realistic car-like movement.
+<img src="https://i.sstatic.net/r0qZt.png" style="">
 - **Rear-wheel drive** for propulsion.
+
 - **Raspberry Pi** handles all camera-based object and wall detection using OpenCV.
 - **EV3 Brick** (running ev3dev) manages motors, ultrasonic sensors, and executes movement commands.
 - **SSH socket communication** links the Pi and EV3, ensuring low-latency, reliable command transfer.
@@ -63,6 +65,53 @@ Our robot is designed to autonomously navigate a WRO FE field, detect colored pi
 - **Chassis:** Custom made by lego, adapted for WRO FE size constraints.
 - **Steering:** Front-wheel Ackerman steering, providing realistic turning dynamics and improved maneuverability compared to differential drive.
 - **Drive:** Rear-wheel drive, controlled via EV3 motors.
+
+#### Detailed Explanation: Front-Wheel Ackermann Steering
+
+**What is Ackermann Steering?**
+
+Ackermann steering is a geometric arrangement of linkages in the steering of a car or robot designed so that all wheels trace out circles with a common center point during a turn. This means the inner and outer front wheels turn at different angles, allowing for smooth, realistic, and slip-free cornering—just like a real car.
+
+**Why Use Ackermann Steering?**
+- It mimics real automotive steering, making the robot's movement more natural and predictable.
+- Reduces tire wear and slippage compared to differential (tank) steering, especially on high-friction surfaces.
+- Essential for precise navigation in tight spaces, as required in the WRO FE challenge.
+
+**How We Implemented It:**
+- The front wheels are connected by a custom LEGO steering linkage, driven by a single EV3 large motor (steering motor).
+- The steering linkage is designed so that when the motor turns, the left and right wheels pivot at different angles, following the Ackermann geometry.
+- The rear wheels are fixed and provide propulsion only.
+- The steering motor is calibrated to allow a maximum steering angle of about 50°, providing a tight turning radius.
+- The geometry was tuned by adjusting the lengths and pivot points of the LEGO beams to approximate the ideal Ackermann angles.
+
+**Control:**
+- The EV3 brick receives steering commands (e.g., from the Raspberry Pi or its own centering logic) and sets the steering motor to the required angle using position control.
+- The robot can smoothly transition between straight, left, and right turns, and can hold any steering angle for curved paths.
+
+**Advantages for WRO FE:**
+- Allows the robot to navigate sharp corners and narrow passages without skidding.
+- More efficient and realistic movement, which is important for tasks like parking and pillar avoidance.
+- Makes the robot's behavior more predictable for both manual tuning and autonomous algorithms.
+
+**Ackermann Steering Diagram:**
+
+```mermaid
+flowchart TD
+    A["Steering Servo Motor"] --> B["Steering Linkages"]
+    B --> C["Front Left Wheel"]
+    B --> D["Front Right Wheel"]
+    C -- "Turns at larger angle" --> E["Inner Wheel Path"]
+    D -- "Turns at smaller angle" --> F["Outer Wheel Path"]
+    G["Rear Wheels (Fixed)"]
+    style G fill:#eee,stroke:#333,stroke-width:2px
+    C --> G
+    D --> G
+    subgraph Ackermann Geometry
+        C
+        D
+        G
+    end
+```
 
 ### ⚡ Power Management
 
@@ -177,7 +226,7 @@ print("Connected.")
 
 **Example: ROI extraction and mask creation (Raspberry Pi)**
 ```python
-    import cv2
+import cv2
 import numpy as np
 # Assume frame is a BGR image from the camera
 lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
