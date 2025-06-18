@@ -229,7 +229,7 @@ Raspberry Pi (Vision Processing)
 <img src="https://m.media-amazon.com/images/I/61ljvcb1SrL.jpg" width="150">
 - **Touch sensor (EV3):** Starting the program
 <img src="https://www.lego.com/cdn/cs/set/assets/blt57e7b4a821dfc054/45507.jpg" width="150">
-- **camera:** Wide-angle camera for robust color and object detection.
+- <u> camera: </u> Wide-angle camera for robust color and object detection.
 
 ### Computing Units
 
