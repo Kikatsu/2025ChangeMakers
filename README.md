@@ -188,6 +188,42 @@ flowchart TD
 | Raspberry Pi | Power Bank | 5V | ~2.5A max |
 | Camera | Raspberry Pi | 3.3V | ~250mA |
 
+**Power Distribution Diagram:**
+
+```mermaid
+flowchart TD
+    subgraph Power_Sources["Power Sources"]
+        EV3Bat["EV3 Battery\n7.2V, 2200mAh"]
+        PowerBank["Power Bank\n5V, 10000mAh"]
+    end
+
+    subgraph EV3_Components["EV3 Components"]
+        EV3["EV3 Brick"]
+        Motors["Motors\n7.2V, ~500mA each"]
+        Sensors["Sensors\n5V, ~50mA each"]
+    end
+
+    subgraph Pi_Components["Raspberry Pi Components"]
+        RPi["Raspberry Pi\n5V, 2.5A max"]
+        Cam["Camera\n3.3V, ~250mA"]
+    end
+
+    EV3Bat --> |"7.2V"| EV3
+    EV3 --> |"7.2V"| Motors
+    EV3 --> |"5V"| Sensors
+    
+    PowerBank --> |"5V"| RPi
+    RPi --> |"3.3V"| Cam
+
+    style EV3Bat fill:#f96,stroke:#333
+    style PowerBank fill:#9cf,stroke:#333
+    style EV3 fill:#ddd,stroke:#333
+    style RPi fill:#ddd,stroke:#333
+    style Motors fill:#ddd,stroke:#333
+    style Sensors fill:#ddd,stroke:#333
+    style Cam fill:#ddd,stroke:#333
+```
+
 #### Communication Flow
 ```
 Raspberry Pi (Vision Processing)
