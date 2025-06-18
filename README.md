@@ -217,11 +217,11 @@ flowchart TD
 
     style EV3Bat fill:#f96,stroke:#333
     style PowerBank fill:#9cf,stroke:#333
-    style EV3 fill:#ddd,stroke:#333
-    style RPi fill:#ddd,stroke:#333
-    style Motors fill:#ddd,stroke:#333
-    style Sensors fill:#ddd,stroke:#333
-    style Cam fill:#ddd,stroke:#333
+    style EV3 fill:#fff,stroke:#333
+    style RPi fill:#fff,stroke:#333
+    style Motors fill:#fff,stroke:#333
+    style Sensors fill:#fff,stroke:#333
+    style Cam fill:#fff,stroke:#333
 ```
 
 #### Communication Flow
