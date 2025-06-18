@@ -223,13 +223,13 @@ Raspberry Pi (Vision Processing)
 
 ### Sensors
 
-- **Ultrasonic Sensors (EV3):** Mounted on both sides for precise centering between walls.
+- <b> Ultrasonic Sensors (EV3): </b> Mounted on both sides for precise centering between walls.
 <img src="https://m.media-amazon.com/images/I/51wnwlOTfCL._AC_SL1000_.jpg" width="150">
-- **Color Sensor (EV3):** For counting turns
+- <b> Color Sensor (EV3): </b> For counting turns
 <img src="https://m.media-amazon.com/images/I/61ljvcb1SrL.jpg" width="150">
-- **Touch sensor (EV3):** Starting the program
+- <b> Touch sensor </b> (EV3): </b> Starting the program
 <img src="https://www.lego.com/cdn/cs/set/assets/blt57e7b4a821dfc054/45507.jpg" width="150">
-- <b> camera: </b> Wide-angle camera for robust color and object detection.
+- <b> Camera: </b> Wide-angle camera for robust color and object detection.
 
 ### Computing Units
 
