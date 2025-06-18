@@ -125,7 +125,7 @@ flowchart TD
 
 ### 🔌 Connection Scheme
 
-
+```mermaid
 flowchart TD
     subgraph EV3_Brick["EV3 Brick"]
         USL["Ultrasonic Sensor (Left)\nPort 1"]
@@ -156,6 +156,7 @@ flowchart TD
     EV3_Brick -- "Motors & Sensors" --> Touch
     Raspberry_Pi -- "Camera Input" --> Cam
     Raspberry_Pi -- "Power" --> Power
+```
 
 #### EV3 Configuration
 
