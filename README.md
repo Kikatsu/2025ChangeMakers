@@ -102,7 +102,7 @@ flowchart TD
     C -- "Turns at larger angle" --> E["Inner Wheel Path"]
     D -- "Turns at smaller angle" --> F["Outer Wheel Path"]
     G["Rear Wheels (Fixed)"]
-    style G fill:#eee,stroke:#333,stroke-width:2px
+    style G fill:#000,stroke:#eee,stroke-width:2px,color:#fff
     C --> G
     D --> G
     subgraph Ackermann Geometry
@@ -124,6 +124,28 @@ flowchart TD
   - Ensures clean signal processing
 
 ### 🔌 Connection Scheme
+
+
+#### EV3 Configuration
+
+| Port Type | Port Number | Component | Purpose |
+|-----------|-------------|-----------|----------|
+| Input | 1 | Ultrasonic Sensor (Left) | Wall distance detection |
+| Input | 2 | Ultrasonic Sensor (Right) | Wall distance detection |
+| Input | 3 | Color Sensor | Turn detection |
+| Input | 4 | Touch Sensor | Program start button |
+| Output | A | Drive Motor | Main propulsion |
+| Output | B | Steering Motor | Direction control |
+
+#### Raspberry Pi Configuration
+
+| Port | Connected To | Purpose |
+|------|-------------|----------|
+| CSI Port | Camera Module | Vision input |
+| USB-A | EV3 Brick | SSH communication |
+| USB-C | Power Bank | Power input (5V) |
+| GPIO | Fan | Cooling (optional) |
+
 
 ```mermaid
 flowchart TD
@@ -158,25 +180,6 @@ flowchart TD
     Raspberry_Pi -- "Power" --> Power
 ```
 
-#### EV3 Configuration
-
-| Port Type | Port Number | Component | Purpose |
-|-----------|-------------|-----------|----------|
-| Input | 1 | Ultrasonic Sensor (Left) | Wall distance detection |
-| Input | 2 | Ultrasonic Sensor (Right) | Wall distance detection |
-| Input | 3 | Color Sensor | Turn detection |
-| Input | 4 | Touch Sensor | Program start button |
-| Output | A | Drive Motor | Main propulsion |
-| Output | B | Steering Motor | Direction control |
-
-#### Raspberry Pi Configuration
-
-| Port | Connected To | Purpose |
-|------|-------------|----------|
-| CSI Port | Camera Module | Vision input |
-| USB-A | EV3 Brick | SSH communication |
-| USB-C | Power Bank | Power input (5V) |
-| GPIO | Fan | Cooling (optional) |
 
 #### Power Distribution
 
